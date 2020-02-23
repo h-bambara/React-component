@@ -1,23 +1,32 @@
 import React, { Component } from 'react';
 
 class CreateButton extends Component{
-    render(){
-        return(
-            <button onClick={()=> {this.createSquare()}} type="button" name="createSquare" value="createSquare">四角を生成する</button>
-        
-            
-        );
+    constructor(props){
+        super(props);
+
+        this.state = {
+            value : ''
+        };
     }
 
     createSquare(){
-        //console.log('呼び出し確認');
-        return(
-        <div>
-            ■
-        </div>
-        );
+        const {value} = this.state;
+            {this.setState({
+                    value: this.state.value + '■'
+                })
+            }
     }
 
+    render(){
+        return(
+            <div>
+                <button onClick={this.createSquare.bind(this)}>四角を生成する</button>
+                <div>
+                    {this.state.value}
+                </div>
+            </div>            
+        );
+    }
 }
 
 export default CreateButton;
